@@ -1,0 +1,7 @@
+term screen-256color
+termcapinfo xterm*|Eterm|mlterm "hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007"
+startup_message off
+hardstatus off
+hardstatus string "screen %n %t%? [%h]%?"
+caption always "%{= kc}%-Lw%50>%{= ck}%n%f* %t%{= kc}%+Lw%<"
+sorendition = Ck
