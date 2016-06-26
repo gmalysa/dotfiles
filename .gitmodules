@@ -1,0 +1,15 @@
+[submodule "vim-plugins/vim-pathogen"]
+	path = vim-plugins/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "vim-plugins/vim-surround"]
+	path = vim-plugins/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim-plugins/vim-gitgutter"]
+	path = vim-plugins/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim-plugins/vim-airline"]
+	path = vim-plugins/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim-plugins/vim-unite"]
+	path = vim-plugins/vim-unite
+	url = https://github.com/Shougo/unite.vim
