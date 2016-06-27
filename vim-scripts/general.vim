@@ -10,6 +10,8 @@ set nobackup
 set autoread
 set mouse=a
 set incsearch
+set ignorecase
+set smartcase
 set noexpandtab
 color torte
 syntax on
