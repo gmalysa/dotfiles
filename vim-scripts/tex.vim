@@ -13,9 +13,11 @@ augroup texsettings
 	autocmd FileType tex command! -nargs=0 Tex call s:TexCompile()
 	autocmd FileType tex command! -nargs=0 Bib call s:BibtexCompile()
 	autocmd FileType tex command! -nargs=0 Pdf call s:PdfView()
+	autocmd FileType tex command! -nargs=0 Idx call s:MakeindexCompile()
+	autocmd FileType tex command! -nargs=0 TexRebuild call s:TexRebuild()
 
-	autocmd FileType tex map <F5> :Tex<CR>
-	autocmd FileType tex map! <F5> :Tex<CR>
+	autocmd FileType tex map <F5> :TexRebuild<CR>
+	autocmd FileType tex map! <F5> :TexRebuild<CR>
 	autocmd FileType tex map <F6> :Bib<CR>
 	autocmd FileType tex map! <F6> :Bib<CR>
 	autocmd FileType tex map <F4> :Pdf<CR>
@@ -31,6 +33,15 @@ function! s:TexBegin(body)
 	exec "startinsert"
 endfunction
 
+" Search for a given latex command by doing a string search on the document
+function! s:CheckForCommand(cmd)
+	let prev_position = getpos(".")
+	call cursor(0,0)
+	let result = search(a:cmd, "c")
+	call setpos('.', prev_position)
+	return result ? 1 : 0
+endfunction
+
 function! s:TexCompile()
   exec ":silent !pdflatex " . expand('%:p')
 endfunction
@@ -39,6 +50,31 @@ function! s:BibtexCompile()
   exec ":silent !bibtex " . substitute(expand('%:t'), '\..*$', '', 'g')
 endfunction
 
+function! s:MakeindexCompile()
+	exec ":silent !makeindex " . expand('%:t:r')
+endfunction
+
 function! s:PdfView()
   exec ":silent !start \"C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe\" " . substitute(expand('%:t'), '\..*$', '.pdf', 'g')
 endfunction
+
+" Master function to try rebuilding everything if necessary
+function! s:TexRebuild()
+	let build_again = 0
+	call s:TexCompile()
+
+	if s:CheckForCommand('\printindex')
+		call s:MakeindexCompile()
+		let build_again = 1
+	end
+
+	if s:CheckForCommand('\bibliography')
+		call s:BibtexCompile()
+		let build_again = 1
+	end
+
+	if build_again
+		call s:TexCompile()
+	end
+endfunction
+
