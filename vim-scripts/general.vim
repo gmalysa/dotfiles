@@ -15,6 +15,7 @@ set smartcase
 set noexpandtab
 color torte
 syntax on
+map  :noh<CR>
 
 " Cursor line highlighting
 set cursorline
