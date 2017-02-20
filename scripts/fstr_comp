@@ -1,0 +1,14 @@
+#!/bin/bash
+
+_fstr_comp()
+{
+	local cur prev options
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	options=$(cat /tmp/fstr_options)
+	COMPREPLY=($(compgen -W "${options}" -- ${cur}))
+}
+
+alias fed='vim'
+
+complete -F _fstr_comp fed

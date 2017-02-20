@@ -1,3 +1,9 @@
 #!/bin/bash
 
-find ./ | xargs grep -n --color=always $1 2>/dev/null
+find ./ | xargs grep --color=always "$1" 2>/dev/null | tee /tmp/fstr_search
+
+chr=$(echo -e "\033")
+
+options=$(cat /tmp/fstr_search | sed -e 's/'${chr}'\[[0-9]*m//g' -e 's/'${chr}'\[K//g' -e 's/^\.\///' -e '/^Binary file/d' | awk -F ":" '{ print $1; }' | uniq | sort)
+
+echo "${options}" > /tmp/fstr_options
