@@ -16,6 +16,7 @@ set noexpandtab
 color torte
 syntax on
 map  :noh<CR>
+set formatoptions-=cro
 
 " Cursor line highlighting
 set cursorline
