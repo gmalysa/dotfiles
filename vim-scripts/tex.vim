@@ -44,18 +44,22 @@ endfunction
 
 function! s:TexCompile()
   exec ":silent !pdflatex " . expand('%:p')
+  exec ":redraw!"
 endfunction
 
 function! s:BibtexCompile()
   exec ":silent !bibtex " . substitute(expand('%:t'), '\..*$', '', 'g')
+  exec ":redraw!"
 endfunction
 
 function! s:MakeindexCompile()
-	exec ":silent !makeindex " . expand('%:t:r')
+  exec ":silent !makeindex " . expand('%:t:r')
+  exec ":redraw!"
 endfunction
 
 function! s:PdfView()
-  exec ":silent !start \"C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe\" " . substitute(expand('%:t'), '\..*$', '.pdf', 'g')
+  exec ":silent !qpdfview " . substitute(expand('%:t'), '\..*$', '.pdf', 'g')
+  exec ":redraw!"
 endfunction
 
 " Master function to try rebuilding everything if necessary
