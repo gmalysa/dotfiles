@@ -114,5 +114,13 @@ else
 	fi
 fi
 
+# Add prompt instructions
+$ECHO "${INFO} Add these lines to bashrc in order to set up color prompt:"
+${ECHO} "	if [[ \${EUID} == 0 ]] ; then"
+${ECHO} "		PS1+='\\[\\033[01;31m\\][\\u@\\h\\[\\033[01;34m\\] \\w\\[\\033[01;31m\\]]\\\$\\[\\033[00m\\] '"
+${ECHO} "	else"
+${ECHO} "		PS1+='\\[\\033[01;32m\\][\\u@\\h\\[\\033[01;34m\\] \\w\\[\\033[01;32m\\]]\\\$\\[\\033[00m\\] '"
+${ECHO}	"	fi"
+
 # Go back to whereever we were called from
 popd > /dev/null
