@@ -18,6 +18,9 @@ syntax on
 map  :noh<CR>
 set formatoptions-=cro
 
+" Insert lambdas for racket
+imap <C-l> λ
+
 " Cursor line highlighting
 set cursorline
 highlight CursorLine guibg=Grey10
