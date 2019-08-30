@@ -1,6 +1,16 @@
 #!/bin/bash
+# Usage:
+#   fstr <search string>
+#   fstr <search string> <filename match>
 
-find ./ | xargs grep --color=always "$1" 2>/dev/null | tee /tmp/fstr_search
+FINDDIR="./"
+FINDNAME="."
+if [ ! -z "$2" ]; then
+	FINDDIR=$(dirname $2 | head -n 1)
+	FINDNAME="$(basename $2)"
+fi
+
+find ${FINDDIR} -type f | grep ${FINDNAME} | xargs grep -i --color=always "$1" 2>/dev/null | tee /tmp/fstr_search
 
 chr=$(echo -e "\033")
 
