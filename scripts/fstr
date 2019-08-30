@@ -10,10 +10,10 @@ if [ ! -z "$2" ]; then
 	FINDNAME="$(basename $2)"
 fi
 
-find ${FINDDIR} -type f | grep ${FINDNAME} | xargs grep -i --color=always "$1" 2>/dev/null | tee /tmp/fstr_search
+find ${FINDDIR} -type f | grep ${FINDNAME} | xargs grep -i --color=always "$1" 2>/dev/null | tee /tmp/fstr_search | less -R -F -X
 
 chr=$(echo -e "\033")
 
-options=$(cat /tmp/fstr_search | sed -e 's/'${chr}'\[[0-9]*m//g' -e 's/'${chr}'\[K//g' -e 's/^\.\///' -e '/^Binary file/d' | awk -F ":" '{ print $1; }' | uniq | sort)
+options=$(cat /tmp/fstr_search | sed -e 's/'${chr}'\[[0-9;]*m//g' -e 's/'${chr}'\[K//g' -e 's/^\.\///' -e '/^Binary file/d' | awk -F ":" '{ print $1; }' | uniq | sort)
 
 echo "${options}" > /tmp/fstr_options
