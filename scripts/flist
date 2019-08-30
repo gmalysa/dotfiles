@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -e /tmp/fstr_search ]]; then
-	cat /tmp/fstr_search
+	cat /tmp/fstr_search | less -R -F -X
 else
 	echo "No previous search recorded."
 fi
