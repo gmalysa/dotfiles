@@ -1,7 +1,8 @@
 term screen-256color
-termcapinfo xterm*|Eterm|mlterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm;hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007"
+#termcapinfo xterm*|Eterm|mlterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm;ts=\E]0;:hs:fs=\007:ds=\E]0;\007"
+#termcapinfo xterm*|Eterm|mlterm "Co#256:hs:ts=\E]0;:fs=\007:ds=\E]0;\007"
 startup_message off
-hardstatus off
-hardstatus string "screen %n %t%? [%h]%?"
-caption always "%{= kc}%-Lw%50>%{= ck}%n%f* %t%{= kc}%+Lw%<"
+#hardstatus off
+hardstatus string "%n %t%? [%h]%?"
+caption always "%{= kg}[ %H ] %{= kc}%-Lw%50>%{= ck}%n%f %t%{= kc}%+Lw%<%=[ %c ]"
 sorendition = Ck
