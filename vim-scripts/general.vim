@@ -18,7 +18,13 @@ syntax on
 map  :noh<CR>
 set formatoptions-=cro
 
-" Insert lambdas for racket
+set listchars=tab:»-,extends:›,precedes:‹,nbsp:·,trail:·,space:·
+
+" Racket-specific stuff
+au filetype scheme set expandtab
+au filetype scheme set ts=2
+au filetype scheme set sw=2
+set lispwords+=define/contract,syntax-case
 imap <C-l> λ
 
 " Cursor line highlighting
