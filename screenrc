@@ -4,5 +4,5 @@ term screen-256color
 startup_message off
 #hardstatus off
 hardstatus string "%n %t%? [%h]%?"
-caption always "%{= kg}[ %H ] %{= kc}%-Lw%50>%{= ck}%n%f %t%{= kc}%+Lw%<%=[ %c ]"
+caption always "%?%P%{= kr}[ PASTE ] %?%{= kg}[ %H ] %{= kc}%-Lw%50>%{= ck}%n%f %t%{= kc}%+Lw%<%=[ %c ]"
 sorendition = Ck
