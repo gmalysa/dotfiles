@@ -114,6 +114,21 @@ else
 	fi
 fi
 
+# Add gitconfig
+if [ -a ~/.gitconfig ]; then
+	${ECHO} "${INFO} A .gitconfig already exists. You should manually merge .gitconfig files."
+else
+	${ECHO} "${INFO} Installing .gitconfig."
+	cp ${SRCDIR}/_gitconfig ~/.gitconfig
+	if [ -a ~/.gitconfig ]; then
+		${ECHO} "${SUCCESS} .gitconfig installed."
+	else
+		${ECHO} "${FAILURE} .gitconfig could not be created."
+	fi
+
+	cp ${SRCDIR}/git-credential-helper-pass /usr/libexec/git-core
+fi
+
 # Add prompt instructions
 $ECHO "${INFO} Add these lines to bashrc in order to set up color prompt:"
 ${ECHO} "	if [[ \${EUID} == 0 ]] ; then"
