@@ -24,7 +24,7 @@ set listchars=tab:»-,extends:›,precedes:‹,nbsp:·,trail:·,space:·
 au filetype scheme set expandtab
 au filetype scheme set ts=2
 au filetype scheme set sw=2
-set lispwords+=define/contract,syntax-case
+set lispwords+=define/contract,syntax-case,define/chain,define/contract/chain
 imap <C-l> λ
 
 " Cursor line highlighting
