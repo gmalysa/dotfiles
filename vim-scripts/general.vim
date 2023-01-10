@@ -32,9 +32,12 @@ set cursorline
 highlight CursorLine guibg=Grey10
 highlight CursorLine ctermbg=234
 highlight CursorLine cterm=none
-set colorcolumn=100
+hi CursorLineNr ctermbg=234
+set colorcolumn=90
 highlight ColorColumn guibg=#330000
 highlight ColorColumn ctermbg=52
+hi Search ctermfg=172
+hi IncSearch ctermfg=172
 
 " Completion menu colors options
 highlight Pmenu ctermfg=38 ctermbg=235
