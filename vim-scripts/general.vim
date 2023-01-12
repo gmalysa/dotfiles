@@ -17,6 +17,7 @@ color torte
 syntax on
 map  :noh<CR>
 set formatoptions-=cro
+set splitright
 
 set listchars=tab:»-,extends:›,precedes:‹,nbsp:·,trail:·,space:·
 
