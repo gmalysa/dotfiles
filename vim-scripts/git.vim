@@ -10,6 +10,10 @@ function! s:GitSquash()
 	exec ":s/^" . s:gitwords . "/squash/"
 endfunction
 
+function! s:GitReword()
+	exec ":s/^" . s:gitwords . "/reword/"
+endfunction
+
 " todo make this show up in a single reusable window instead of always
 " splitting so that it's easier to just scan them
 function! s:GitShow()
@@ -40,3 +44,4 @@ endfunction
 autocmd FileType gitrebase nmap ,g :call <SID>GitShow()<CR>
 autocmd FileType gitrebase nmap ,p :call <SID>GitPick()<CR>
 autocmd FileType gitrebase nmap ,s :call <SID>GitSquash()<CR>
+autocmd FileType gitrebase nmap ,r :call <SID>GitReword()<CR>
