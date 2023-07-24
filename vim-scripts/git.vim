@@ -1,6 +1,6 @@
 
 " Not all just the ones i'm likely to come across
-let s:gitwords = "\\(pick\\|reword\\|edit\\|squash\\)"
+let s:gitwords = "\\(pick\\|reword\\|edit\\|squash\\|drop\\)"
 
 function! s:GitPick()
 	exec ":s/^" . s:gitwords . "/pick/"
@@ -12,6 +12,10 @@ endfunction
 
 function! s:GitReword()
 	exec ":s/^" . s:gitwords . "/reword/"
+endfunction
+
+function! s:GitDrop()
+	exec ":s/^" . s:gitwords . "/drop/"
 endfunction
 
 " todo make this show up in a single reusable window instead of always
@@ -45,3 +49,4 @@ autocmd FileType gitrebase nmap ,g :call <SID>GitShow()<CR>
 autocmd FileType gitrebase nmap ,p :call <SID>GitPick()<CR>
 autocmd FileType gitrebase nmap ,s :call <SID>GitSquash()<CR>
 autocmd FileType gitrebase nmap ,r :call <SID>GitReword()<CR>
+autocmd FileType gitrebase nmap ,d :call <SID>GitDrop()<CR>
